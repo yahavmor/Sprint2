@@ -1,0 +1,25 @@
+*{
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+}
+html{
+      font-family: serif;
+      font-size: 1rem;
+      color: var(--clr-primary-text);
+}
+
+body{
+      font-size: 0.875rem;
+      margin: 0;
+      height: 100vh;
+      display: grid;
+      grid-template-columns:  minmax(100px,1fr) minmax(auto,980px) minmax(100px,1fr);
+}
+body>*{
+    grid-column: 2;
+}
+main{
+      display: grid;
+      grid-auto-flow: column;
+      place-items: center;
+}
