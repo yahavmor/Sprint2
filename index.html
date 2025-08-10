@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/editor-page/style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body onload="onInit()">
-    <header class="main-header full">
+     <header class="main-header full">
         <img class="header-logo" src="/logo.png">
         <section class="header-nav">
             <ul>
-                <li>gallery</li>
-                <li>editor</li>
+                <li onclick="showGallery()">gallery</li>
+                <li onclick="showEditor()">editor</li>
             </ul>
         </section>
     </header>
+    <section class="gallery">
+        <h1>Choose an img</h1>
+        <div class="img-container"></div>
+    </section>
+
+    <section class="editor hidden">
     <main>
         <div class="canvas-container">
-            <canvas class="my-canvas" width="400" height="400px">
-
-            </canvas>
+            <canvas class="my-canvas" width="400" height="400px"></canvas>
         </div>
-        <section class="editor">
-            <input type="text" placeholder="write here">
-
+        <section class="editor-tools">
+            <input type="text" id="memeText" placeholder="Enter meme text">
+            <button id="downloadBtn">Download Meme</button>
         </section>
     </main>
+
     <footer class="main-footer full">
             <img class="footer-logo" src="/logo.png">
             <a href="https://github.com/yahavmor/Sprint2">Click for more</a>
     </footer>
+
+
+
+    </section>
     <script src="js/main.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
 .full{
     grid-column: 1 / 4 ;
 }
+.hidden{
+    display: none;
+}
 
