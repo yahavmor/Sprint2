@@ -1,7 +1,7 @@
-@import url(style/components/canvas.css);
-@import url(style/components/main-header.css);
-@import url(style/components/main-footer.css);
+@import url(components/canvas.css);
+@import url(components/main-header.css);
+@import url(components/main-footer.css);
 
-@import url(style/helpers.css);
+@import url(helpers.css);
 
-@import url(style/basics.css);
+@import url(basics.css);
