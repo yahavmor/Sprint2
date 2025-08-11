@@ -1,65 +1,48 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meme Generator</title>
+  <link rel="stylesheet" href="style/style.css" />
 </head>
 <body onload="onInit()">
-     <header class="main-header full">
-        <img class="header-logo" src="/logo.png">
-        <section class="header-nav">
-            <ul>
-                <li onclick="showGallery()">gallery</li>
-                <li onclick="showEditor()">editor</li>
-            </ul>
-        </section>
-    </header>
-    <section class="gallery">
-        <section class="keyword-search">
-            <input type="text" placeholder="Enter Search Keyword" class="input-keywords" oninput="onSearch(this)">
-        </section>
-        <div class="img-container"></div>
-    </section>
+  <header class="main-header">
+    <h1>Meme Generator</h1>
+  </header>
 
-    <section class="editor hidden">
-    <main>
-        <div class="canvas-container">
-            <canvas class="my-canvas" width="400" height="400px">
-                <input type="text" id="memeText" placeholder="Enter meme text" oninput="writeTxtBox(this)">
+  <section class="gallery">
+    <div class="img-container"></div>
+  </section>
 
+  <section class="editor hidden">
+    <canvas class="meme-canvas" width="500" height="500"></canvas>
 
-            </canvas>
-        </div>
-        <section class="editor-tools">
-            <input type="text" id="memeText" placeholder="Enter meme text" oninput="writeTxtBox(this)">
-            <section class="icons">
-                <img class="icon" src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
-                <img class="icon" src="icons/add.png" alt="">
-                <img class="icon" src="icons/trash.png" alt="">
-                <img class="icon" src="icons/paint-board-and-brush.png" alt="">
-                <img class="icon" src="icons/align-to-left.png" alt="">
-                <img class="icon" src="icons/center-text-alignment.png" alt="">
-                <img class="icon" src="icons/align-to-right.png" alt="">
+    <input
+      type="text"
+      placeholder="Enter meme text"
+      id="text-input"
+      oninput="onSetLineTxt(this.value)"
+    />
 
-                <img class="icon" src="icons/increase font - icon.png" alt="">
-                <img class="icon" src="icons/decrease font - icon.png" alt="">
-            </section>
-            
+    <input
+      type="color"
+      id="color-picker"
+      value="#ffffff"
+      onchange="onSetLineColor(this.value)"
+    />
 
+    <button onclick="onAddLine()">Add Line</button>
+    <button onclick="onSwitchLine()">Switch Line</button>
+    <button onclick="onIncreaseFont()">A+</button>
+    <button onclick="onDecreaseFont()">A-</button>
 
-        </section>
-    </main>
-    </section>
-    <footer class="main-footer full">
-        <img class="footer-logo" src="/logo.png">
-        <a href="https://github.com/yahavmor/Sprint2">Click for more</a>
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/meme-controller.js"></script>
-    <script src="js/gallery-controller.js"></script>
+    <a id="download-btn" href="#" download="my-meme.jpg">Download Meme</a>
+  </section>
+
+  <script src="js/meme-service.js"></script>
+  <script src="js/gallery-controller.js"></script>
+  <script src="js/meme-controller.js"></script>
+  <script src="js/main.js"></script>
 </body>
-</html
+</html>
