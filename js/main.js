@@ -1,25 +1,31 @@
-'use strict';
-function onInit(){
-    loadGallery()
-}
-function showGallery(){
-    var elGallery = document.querySelector('.gallery')
-    elGallery.classList.remove('hidden')
-    var elGallery = document.querySelector('.editor')
-    elGallery.classList.add('hidden')
-}
-function showEditor(){
-    var elGallery = document.querySelector('.editor')
-    elGallery.classList.remove('hidden')
-    var elGallery = document.querySelector('.gallery')
-    elGallery.classList.add('hidden')
-}
-function loadGallery(){
-    var elImgContainer = document.querySelector('.img-container')
-    var strHTML = ''
-}
-function removeBook(bookId) {
-    const bookIndex = gBooks.findIndex(book => book.id === bookId);
-    gBooks.splice(bookIndex, 1);   
+
+const elCanvas = document.querySelector('.my-canvas')
+const ctx = elCanvas.getContext('2d');
+
+function onInit() {
+    renderImges();
 }
 
+function showGallery() {
+    document.querySelector('.gallery').classList.remove('hidden');
+    document.querySelector('.editor').classList.add('hidden');
+}
+
+function showEditor() {
+    document.querySelector('.editor').classList.remove('hidden');
+    document.querySelector('.gallery').classList.add('hidden');
+}
+
+function editImage(elImage){
+    showEditor()
+    const img = new Image();
+    img.src = elImage.src;
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
+    };
+}
+function writeTxtBox(elInput){
+    const value = elInput.value
+    
+
+}
