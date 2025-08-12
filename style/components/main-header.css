@@ -2,6 +2,7 @@
     background-color: aqua;
     display: flex;
     align-items: center;
+    height: 100px;
     justify-content: space-between;
 }
 .header-logo{
