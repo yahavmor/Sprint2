@@ -18,6 +18,7 @@
   </header>
 
   <section class="gallery active">
+    <h1 class="gallery-header">Select an Image</h1>
     <div class="keyword-search">
       <input
         type="text"
@@ -35,21 +36,47 @@
         <input
           type="text"
           placeholder="Enter meme text"
-          id="text-input"
+          class="text-input"
           oninput="onSetLineTxt(this.value)"
         />
-        <label for="color-picker" style="font-weight:bold; margin-right: 8px;"> Pick a color :</label>
+        <label for="color-picker" class="label-color-picker"> Pick a color :</label>
         <input
         type="color"
-        id="color-picker"
+        class="color-picker"
         value="#ffffff"
         onchange="onSetLineColor(this.value)"
         />
-
-        
-
       </div>
-
+      <div class="font-selector"> 
+        <label for="font-selector" class="font-label">Choose Font:</label>
+        <select id="fontSelector" class="font-selector" onchange="onFontChange(this.value)">
+          <option value="Arial">Arial</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Helvetica">Helvetica</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Trebuchet MS">Trebuchet MS</option>
+          <option value="Impact">Impact</option>
+          <option value="Comic Sans MS">Comic Sans MS</option>
+          <option value="Lucida Console">Lucida Console</option>
+          <option value="Palatino Linotype">Palatino Linotype</option>
+          <option value="Tahoma">Tahoma</option>
+          <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+          <option value="Gill Sans">Gill Sans</option>
+          <option value="Century Gothic">Century Gothic</option>
+          <option value="Candara">Candara</option>
+          <option value="Garamond">Garamond</option>
+          <option value="Book Antiqua">Book Antiqua</option>
+          <option value="Perpetua">Perpetua</option>
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Rockwell">Rockwell</option>
+          <option value="Futura">Futura</option>
+          <option value="Calibri">Calibri</option>
+          <option value="Optima">Optima</option>
+          <option value="Cambria">Cambria</option>
+        </select>
+      </div>
       <div class="icons">
         <img
           class="icon"
@@ -108,14 +135,22 @@
           alt="Decrease font"
         />
       </div>
-      <a id="download-btn" href="#" download="my-meme.jpg">Download Meme</a>
+      <a class="download-btn" href="#" download="my-meme.jpg">Download Meme</a>
     </div>
   </section>
 
   <footer>
-    <div>© 2025 Meme Generator</div>
-    <a href="https://github.com/yahavmor/Sprint2" target="_blank">GitHub Repo</a>
+    <div>© 2025 Meme Generator by Yahav Mor Cooperations. All rights reserved.</div>
+    <a href="https://github.com/yahavmor/Sprint2" target="_blank" class="github-button">
+    View Project on GitHub
+    </a>  
   </footer>
+  <dialog onsubmit="onCloseModal()">
+    <p>Please select an image first from the gallery!</p>
+    <button class="close-button" onclick="onCloseModal()">Close</button>
+  </dialog>
+
+
     <script src="js/gallery-service.js"></script>
     <script src="js/editor-service.js"></script>
     <script src="js/gallery-controller.js"></script>

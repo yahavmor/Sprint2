@@ -15,20 +15,13 @@ const gMeme = {
   ],
 };
 
+function getMeme() {
+  return gMeme;
+}
+
 function setImg(id) {
   gMeme.selectedImgId = id;
   gMeme.selectedLineIdx = 0;
-  gMeme.lines = [
-    {
-      txt: '',
-      size: 40,
-      color: 'white',
-      stroke: 'black',
-      x: elCanvas.width / 2,
-      y: 50,
-      align: 'center',
-    },
-  ];
 }
 
 function rgbToHex(color) {
@@ -103,3 +96,5 @@ function onAlign(alignType) {
   gMeme.lines[gMeme.selectedLineIdx].align = alignType;
   renderMeme();
 }
+
+

@@ -2,16 +2,12 @@
 
 const elCanvas = document.querySelector('.meme-canvas');
 const ctx = elCanvas.getContext('2d');
-const elInput = document.getElementById('text-input');
-const elColorPicker = document.getElementById('color-picker');
-const elDownload = document.getElementById('download-btn');
-
+const elInput = document.querySelector('.text-input');
+const elColorPicker = document.querySelector('.color-picker');
+const elDownload = document.querySelector('.download-btn');
 let gFilter = '';
 
-function onInit() {
-  renderGallery();
-  showGallery();
-}
+
 
 
 function onImgSelect(imgId) {
@@ -19,19 +15,11 @@ function onImgSelect(imgId) {
   showEditor();
   renderMeme();
 }
-function updateInputForSelectedLine() {
-  const meme = getMeme();
-  const line = meme.lines[meme.selectedLineIdx];
-  elInput.value = line.txt;
-  elColorPicker.value = rgbToHex(line.color);
-}
 
 function renderMeme() {
   const meme = getMeme();
-  if (!meme.selectedImgId) return;
-
-  const imgData = getImgs().find((img) => img.id === meme.selectedImgId);
-  if (!imgData) return;
+  console.log(meme.lines)
+  const imgData = gImgs.find(img => img.id === meme.selectedImgId);
 
   const img = new Image();
   img.src = imgData.url;
@@ -39,12 +27,12 @@ function renderMeme() {
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
 
-    meme.lines.forEach((line, idx) => {
-      ctx.font = `bold ${line.size}px Impact`;
+    meme.lines.forEach(line => {
+      ctx.font = `bold ${line.size}px ${line.font || 'Impact'}`;
       ctx.fillStyle = line.color;
-      ctx.strokeStyle = line.stroke || 'black';
+      ctx.strokeStyle = line.stroke;
       ctx.lineWidth = 3;
-      ctx.textAlign = line.align || 'center';
+      ctx.textAlign = line.align;
 
       ctx.fillText(line.txt, line.x, line.y);
       ctx.strokeText(line.txt, line.x, line.y);
@@ -52,8 +40,21 @@ function renderMeme() {
         updateDownloadLink(); 
   };
 }
+function updateInputForSelectedLine() {
+  const meme = getMeme();
+  const line = meme.lines[meme.selectedLineIdx];
+  elInput.value = line.txt;
+  elColorPicker.value = rgbToHex(line.color);
+}
+function onFontChange(font) {
+  gMeme.lines[gMeme.selectedLineIdx].font = font;
+  renderMeme();
+}
 
-elInput.addEventListener('input', (ev) => {
+
+
+
+elInput.addEventListener('input',ev => {
   onSetLineTxt(ev.target.value);
 });
 elColorPicker.addEventListener('input', (ev) => {
@@ -66,9 +67,6 @@ function updateDownloadLink() {
 
 
 
-function getMeme() {
-  return gMeme;
-}
 
 
 
@@ -94,4 +92,5 @@ function onIncreaseFont() {
 function onDecreaseFont() {
   decreaseFont();
 }
+
 
