@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const gImgs = [
   {
@@ -292,13 +292,31 @@ const gImgs = [
       'childhood'
     ] 
   }
-  ];
+  ]
 
 function filteredImgs(imgs) {
   return imgs.filter((img) =>
     img.keyWords.some((keyword) =>
       keyword.toLowerCase().includes(gFilter.toLowerCase())
     )
-  );
+  )
 }
 
+function showGallery() {
+  document.querySelector('.gallery').classList.add('active')
+  document.querySelector('.editor').classList.remove('active')
+}
+function showEditor() {
+  if (!gMeme.selectedImgId) {
+    document.querySelector('dialog').showModal()
+    return
+  }
+  
+  document.querySelector('.gallery').classList.remove('active')
+  document.querySelector('.editor').classList.add('active')
+  updateInputForSelectedLine()
+  elInput.focus() 
+}
+function closeModal(){
+    document.querySelector('dialog').close()
+}

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
@@ -13,41 +13,30 @@ const gMeme = {
       align: 'center',
     },
   ],
-};
+}
 
 function getMeme() {
-  return gMeme;
+  return gMeme
 }
 
 function setImg(id) {
-  gMeme.selectedImgId = id;
-  gMeme.selectedLineIdx = 0;
+  gMeme.selectedImgId = id
+  gMeme.selectedLineIdx = 0
 }
 
-function rgbToHex(color) {
-  const colors = {
-    white: '#ffffff',
-    black: '#000000',
-    red: '#ff0000',
-    blue: '#0000ff',
-    green: '#008000',
-    yellow: '#ffff00',
-  };
-  return colors[color.toLowerCase()] || '#ffffff';
-}
 function setLineTxt(txt) {
-  gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+  gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function setLineColor(color) {
-  gMeme.lines[gMeme.selectedLineIdx].color = color;
+  gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
 function switchLine() {
   if (gMeme.lines.length > 1) {
-    gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length;
-    updateInputForSelectedLine();
-    renderMeme();
+    gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length
+    updateInputForSelectedLine()
+    renderMeme(true)
   }
 }
 
@@ -61,40 +50,106 @@ function addLine() {
       x: elCanvas.width / 2,
       y: elCanvas.height - 50,
       align: 'center',
-    });
-    gMeme.selectedLineIdx = gMeme.lines.length - 1;
-    updateInputForSelectedLine();
-    renderMeme();
+    })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    updateInputForSelectedLine()
+    renderMeme(true)
   } else {
-    alert('You can only add up to 2 lines!');
+    alert('You can only add up to 2 lines!')
   }
 }
 
 function onDeleteLine() {
+  elInput.disabled = false 
   if (gMeme.lines.length > 1) {
-    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-    gMeme.selectedLineIdx = 0;
-    updateInputForSelectedLine();
-    renderMeme();
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = 0
   } else {
-    alert('You need at least one line!');
+    gMeme.lines[0] = {
+      txt: '',
+      size: 40,
+      color: 'white',
+      stroke: 'black',
+      x: elCanvas.width / 2,
+      y: 50,
+      align: 'center',
+    }
   }
+
+  updateInputForSelectedLine()
+  renderMeme(true)
 }
 
+
 function increaseFont() {
-  gMeme.lines[gMeme.selectedLineIdx].size += 5;
-  renderMeme();
+  gMeme.lines[gMeme.selectedLineIdx].size += 5
+  renderMeme(true)
 }
 
 function decreaseFont() {
-  const line = gMeme.lines[gMeme.selectedLineIdx];
-  line.size = Math.max(10, line.size - 5);
-  renderMeme();
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.size = Math.max(10, line.size - 5)
+  renderMeme(true)
 }
 
 function onAlign(alignType) {
-  gMeme.lines[gMeme.selectedLineIdx].align = alignType;
-  renderMeme();
+  gMeme.lines[gMeme.selectedLineIdx].align = alignType
+  renderMeme(true)
+}
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, elCanvas.width, elCanvas.height)
+}
+
+function drawImage(img) {
+  ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
+}
+
+function drawTextLines(meme, showFrame) {
+    meme.lines.forEach((line, idx) => {
+    drawText(line)
+    if (showFrame && idx === meme.selectedLineIdx) {
+      drawTextFrame(line)
+    }
+  })
 }
 
 
+function drawText(line) {
+  ctx.font = `bold ${line.size}px ${line.font || 'Impact'}`
+  ctx.fillStyle = line.color
+  ctx.strokeStyle = line.stroke
+  ctx.lineWidth = 3
+  ctx.textAlign = line.align
+
+  ctx.fillText(line.txt, line.x, line.y)
+  ctx.strokeText(line.txt, line.x, line.y)
+}
+function drawTextFrame(line) {
+  const textMetrics = ctx.measureText(line.txt)
+  const padding = 10
+  const height = line.size + padding
+  let xStart
+
+  switch (line.align) {
+    case 'left':
+      xStart = line.x
+      break
+    case 'center':
+      xStart = line.x - textMetrics.width / 2
+      break
+    case 'right':
+      xStart = line.x - textMetrics.width
+      break
+  }
+
+  ctx.strokeStyle = 'white'       
+  ctx.lineWidth = 1               
+  ctx.setLineDash([4, 4])       
+  ctx.strokeRect(xStart - padding / 2, line.y - line.size, textMetrics.width + padding, height)
+  ctx.setLineDash([])           
+
+}
+function clearTxtInput(){
+  elInput.value = ''
+}

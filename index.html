@@ -26,6 +26,7 @@
         oninput="onSearch(this)"
       />
     </div>
+    <button class="im-flexible-btn" onclick="onImFlexible()">IM FLEXIABLE</button>
     <div class="img-container"></div>
   </section>
 
@@ -39,6 +40,8 @@
           class="text-input"
           oninput="onSetLineTxt(this.value)"
         />
+        <button class="confirm-line-btn">✔ Confirm Line</button>
+
         <label for="color-picker" class="label-color-picker"> Pick a color :</label>
         <input
         type="color"
@@ -46,6 +49,7 @@
         value="#ffffff"
         onchange="onSetLineColor(this.value)"
         />
+
       </div>
       <div class="font-selector"> 
         <label for="font-selector" class="font-label">Choose Font:</label>
@@ -135,7 +139,9 @@
           alt="Decrease font"
         />
       </div>
-      <a class="download-btn" href="#" download="my-meme.jpg">Download Meme</a>
+      <a class="download-btn" href="#" onclick="updateDownloadLink()">Download Meme</a>
+      <button class="btn-facebook" onclick="shareOnFacebook()">Share on facebook</button>
+
     </div>
   </section>
 
@@ -160,3 +166,4 @@
 
 </body>
 </html>
+  
