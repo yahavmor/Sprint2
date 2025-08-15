@@ -303,20 +303,34 @@ function filteredImgs(imgs) {
 }
 
 function showGallery() {
-  document.querySelector('.gallery').classList.add('active')
-  document.querySelector('.editor').classList.remove('active')
+  resetMeme() 
+
+  const sections = document.querySelectorAll('section')
+  sections.forEach(section => section.classList.remove('active'))
+
+  const gallerySection = document.querySelector('.gallery')
+  gallerySection.classList.add('active')
 }
-function showEditor() {
-  if (!gMeme.selectedImgId) {
-    document.querySelector('dialog').showModal()
-    return
-  }
-  
-  document.querySelector('.gallery').classList.remove('active')
-  document.querySelector('.editor').classList.add('active')
-  updateInputForSelectedLine()
-  elInput.focus() 
-}
+
+
+
 function closeModal(){
     document.querySelector('dialog').close()
+}
+function resetMeme() {
+  gMeme.selectedImgId = null
+  gMeme.selectedLineIdx = 0
+  gMeme.lines = [
+    {
+      txt: '',
+      size: 40,
+      color: 'white',
+      stroke: 'black',
+      x: elCanvas.width / 2,
+      y: 50,
+      align: 'center',
+    },
+  ]
+  clearCanvas()
+  clearTxtInput()
 }

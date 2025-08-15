@@ -14,6 +14,8 @@
     <ul>
       <li onclick="showGallery()">Gallery</li>
       <li onclick="showEditor()">Editor</li>
+      <li onclick="showSaved()">Saved</li>
+
     </ul>
   </header>
 
@@ -140,10 +142,16 @@
         />
       </div>
       <a class="download-btn" href="#" onclick="updateDownloadLink()">Download Meme</a>
+      <button class="save-btn" onclick="onSaveMeme()">Save Meme</button>
       <button class="btn-facebook" onclick="shareOnFacebook()">Share on facebook</button>
 
     </div>
   </section>
+  <section class="saved">
+    <h1 class="saved-header">Your Saved Memes</h1>
+    <div class="saved-container"></div>
+  </section>
+
 
   <footer>
     <div>© 2025 Meme Generator by Yahav Mor Cooperations. All rights reserved.</div>
@@ -151,19 +159,18 @@
     View Project on GitHub
     </a>  
   </footer>
-  <dialog onsubmit="onCloseModal()">
-    <p>Please select an image first from the gallery!</p>
+<dialog id="imageModal">
+  <div class="modal-content">
+    <p class="modal-message"> Please select an image from the gallery before proceeding.</p>
     <button class="close-button" onclick="onCloseModal()">Close</button>
-  </dialog>
-
-
+  </div>
+</dialog>
+  <div class="toast">✅ Meme saved successfully!</div>
     <script src="js/gallery-service.js"></script>
     <script src="js/editor-service.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/editor-controller.js"></script>
-
-
-
+    <script src="js/saved-images.js"></script>
 </body>
 </html>
   

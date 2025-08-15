@@ -1,0 +1,63 @@
+.saved {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+}
+.saved-header {
+  text-align: center;
+  font-size: 2.5em;
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.saved-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+.saved-meme-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.saved-meme {
+  width: 200px;
+  height: auto;
+  border: 2px solid var(--color-gray-medium);
+  border-radius: 8px;
+}
+.delete-btn {
+  background-color: var(--color-save);
+  color: var(--color-white);
+  border: none;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.delete-btn:hover {
+  background-color: var(--color-save-hover);
+  transform: scale(1.1);
+}
+.no-memes-msg {
+  text-align: center;
+  font-size: 1.4em;
+  color: var(--color-gray-dark);
+  background-color: var(--color-gray-light);
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+.saved.active {
+  display: block;
+}

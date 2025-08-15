@@ -1,123 +1,166 @@
+.meme-canvas {
+      border: 2px solid #333;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      align-self: center;
+}
 .tools {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: auto;
-    }
-    .text-and-color {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .text-input {
-      flex-grow: 1;
-      padding: 8px;
-      font-size: 18px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    .color-picker {
-      width: 50px;
-      height: 40px;
-      border: none;
-      cursor: pointer;
-      background: none;
-    }
-    .label-color-picker{
-      font-weight:bold;
-      margin-right: 8px;
-    }
-    .icons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .icon {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .icon:hover {
-      transform: scale(1.2);
-    }
-    .download-btn {
-      margin-top: 15px;
-      padding: 10px;
-      background: #00b894;
-      color: white;
-      text-align: center;
-      font-weight: bold;
-      border-radius: 6px;
-      text-decoration: none;
-      user-select: none;
-    }
-    #download-btn:hover {
-      background: #019870;
-    }
-    
-    .btn-facebook {
-      margin-top: 50px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-      
-    .font-selector {
-      padding: 8px 12px;
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      color: #333;
-      font-family: Arial, sans-serif;
-      transition: border-color 0.3s ease;
-    }
-    .font-label {
-      font-family: Arial, sans-serif;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+}
+.text-and-color {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.text-input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.confirm-line-btn {
+  background-color: var(--color-white);
+  color: var(--color-gray-dark);
+  border: 1px dashed var(--color-confirm-border);
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.confirm-line-btn:hover {
+  background-color: #f0f0f0;
+  border-color: var(--color-confirm-hover);
+  color: var(--color-confirm-hover);
+}
+.color-picker {
+  width: 50px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+.label-color-picker{
+  font-weight:bold;
+  margin-right: 8px;
+}
+.font-selector {
+  padding: 8px 12px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s ease;
+}
+.font-label {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+.font-selector:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.icon:hover {
+  transform: scale(1.2);
+}
+.download-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  user-select: none;
+  margin: 0;
+}
+.download-btn:hover {
+  transform: scale(1.05);
+  transition:transform 0.2s ease;
+}
+.save-btn {
+  background-color: var(--color-save);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 0;
+}
+.save-btn:hover {
+  background-color: var(--color-save-hover);
+  transform: scale(1.05);
+}
+.btn-facebook {
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--color-facebook);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0;
+}
+.btn-facebook:hover {
+  background-color: var(--color-facebook-hover);
+  transform: scale(1.05);
+}
+.toast {
+  position: fixed;
+  top: 70px;
+  right: -300px;
+  background-color: var(--color-save);
+  color: var(--color-white);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 9999;
+  transition: right 0.5s ease-in-out;
+}
+.toast.show {
+  right: 20px;
+}
 
-  
-    .font-selector:focus {
-      border-color: #007BFF;
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-    }
 
-    .confirm-line-btn {
-      background-color: #ffffff;       
-      color: #333;                     
-      border: 1px dashed #333;         
-      padding: 8px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .confirm-line-btn:hover {
-      background-color: #f0f0f0;       
-      border-color: #007BFF;          
-      color: #007BFF;                  
-    }
-    
-    .btn-facebook{
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4267B2;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-facebook:hover {
-      background-color: #365899;
-    }
-    
+
+
+
+

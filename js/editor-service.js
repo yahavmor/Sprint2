@@ -39,6 +39,18 @@ function switchLine() {
     renderMeme(true)
   }
 }
+function showEditor() {
+  if (!gMeme.selectedImgId) {
+    document.querySelector('dialog').showModal()
+    return
+  }
+  const sections = document.querySelectorAll('section')
+  sections.forEach(section => section.classList.remove('active'))
+
+  const editorSection = document.querySelector('.editor')
+  editorSection.classList.add('active')
+  elInput.focus()
+}
 
 function addLine() {
   if (gMeme.lines.length < 2) {

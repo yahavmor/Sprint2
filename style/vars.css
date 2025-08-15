@@ -1,0 +1,21 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-light: #f9f9f9;
+  --color-gray-medium: #ccc;
+  --color-gray-dark: #333;
+
+  --color-primary: #00b894;
+  --color-primary-hover: #019870;
+
+  --color-facebook: #4267B2;
+  --color-facebook-hover: #365899;
+  --color-facebook-active: #2e4a86;
+
+  --color-save: #4CAF50;
+  --color-save-hover: #45a049;
+  --color-save-active: #3e8e41;
+
+  --color-confirm-border: #333;
+  --color-confirm-hover: #007BFF;
+}

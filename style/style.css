@@ -1,10 +1,10 @@
-@import url(components/canvas.css);
-@import url(components/header.css);
-@import url(components/footer.css);
-@import url(components/gallery.css);
-@import url(components/editor.css);
-
+@import url(vars.css);
 
 @import url(helpers.css);
 
 @import url(basics.css);
+
+@import url(components/header.css);
+@import url(components/gallery.css);
+@import url(components/editor.css);
+@import url(components/saved.css);
