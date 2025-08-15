@@ -37,6 +37,7 @@ function switchLine() {
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length
     updateInputForSelectedLine()
     renderMeme(true)
+    elInput.focus()
   }
 }
 function showEditor() {
@@ -114,8 +115,27 @@ function clearCanvas() {
 }
 
 function drawImage(img) {
-  ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
+  const canvasRatio = elCanvas.width / elCanvas.height
+  const imgRatio = img.width / img.height
+
+  let srcX = 0, srcY = 0, srcWidth = img.width, srcHeight = img.height
+
+  if (imgRatio > canvasRatio) {
+    srcWidth = img.height * canvasRatio
+    srcX = (img.width - srcWidth) / 2
+  } else {
+    srcHeight = img.width / canvasRatio
+    srcY = (img.height - srcHeight) / 2
+  }
+
+  ctx.drawImage(
+    img,
+    srcX, srcY, srcWidth, srcHeight, 
+    0, 0, elCanvas.width, elCanvas.height 
+  )
 }
+
+
 
 function drawTextLines(meme, showFrame) {
     meme.lines.forEach((line, idx) => {

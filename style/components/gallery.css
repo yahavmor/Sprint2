@@ -1,4 +1,4 @@
-.gallery, .editor {
+.gallery{
   flex-grow: 1;
   padding: 20px;
   background: var(--color-white);
@@ -42,6 +42,49 @@
 .im-flexible-btn:hover {
   background-color: var(--color-facebook-hover);
 }
+.upload-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 30px auto;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0f4ff, #e0eaff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+}
+
+.upload-label {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #3a3a3a;
+  white-space: nowrap;
+}
+
+#imgUpload {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid #6c8efb;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#imgUpload:hover {
+  background-color: #f0f4ff;
+  border-color: #4a6cfb;
+}
+
+#imgUpload:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 140, 255, 0.3);
+}
+
+
+
 .img-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

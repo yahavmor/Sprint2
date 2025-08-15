@@ -8,6 +8,9 @@ const elDownload = document.querySelector('.download-btn')
 const elConfirmLineBtn = document.querySelector('.confirm-line-btn')
 
 let gFilter = ''
+let gUploadedImg = null
+
+
 
 
 
@@ -17,21 +20,45 @@ function onImgSelect(imgId) {
   showEditor()
   renderMeme(true)
 }
+function onUploadImage(event) {
+  const file = event.target.files[0]
+  const reader = new FileReader()
+  reader.onload = function (e) {
+    const img = new Image()
+    img.src = e.target.result
+    img.onload = () => {
+      gUploadedImg = img
+      gMeme.selectedImgId = 'uploaded'
+      showEditor()
+      renderMeme(true)
+    }
+  }
+  reader.readAsDataURL(file)
+}
 
 function renderMeme(showFrame, callback = null) {
   const meme = getMeme()
+
+  let img
+  if (meme.selectedImgId === 'uploaded') {
+    img = gUploadedImg
+    clearCanvas()
+    drawImage(img)
+    drawTextLines(meme, showFrame)
+    if (callback) callback()
+    return
+  }
+
   const imgData = gImgs.find(img => img.id === meme.selectedImgId)
-  const img = new Image()
+  img = new Image()
   img.src = imgData.url
   img.onload = () => {
     clearCanvas()
     drawImage(img)
     drawTextLines(meme, showFrame)
-    if (callback) callback() 
-  }
+    if (callback) callback()
+    }
 }
-
-
 
 function updateInputForSelectedLine() {
   const meme = getMeme()
@@ -41,10 +68,8 @@ function updateInputForSelectedLine() {
 function onFontChange(font) {
   gMeme.lines[gMeme.selectedLineIdx].font = font
   renderMeme(true)
+  updateDownloadLink()
 }
-
-
-
 
 elInput.addEventListener('input',ev => {
   onSetLineTxt(ev.target.value)
@@ -54,33 +79,29 @@ elColorPicker.addEventListener('input', (ev) => {
 })
 function updateDownloadLink() {
   renderMeme(false, () => {
-    try {
-      const dataURL = elCanvas.toDataURL('image/jpeg')
-      elDownload.href = dataURL
-      elDownload.download = 'my-meme.jpg'
-    } catch (err) {
-      console.error("Failed to generate image:", err)
-      alert("There was an error generating the meme image.")
-    }
+    setTimeout(() => {
+      try {
+        const dataURL = elCanvas.toDataURL('image/jpeg')
+        elDownload.href = dataURL
+        elDownload.download = 'my-meme.jpg'
+      } catch (err) {
+        console.error("Failed to generate image:", err)
+        alert("There was an error generating the meme image.")
+      }
+    }, 100) 
   })
 }
-
-
 
 elConfirmLineBtn.addEventListener('click', () => {
   onConfirmLine()
 })
 
-
 function onConfirmLine() {
-  if (!elInput.value) return
   clearTxtInput()
-  elInput.blur()              
-  elInput.disabled = true       
-  updateDownloadLink()         
+  elInput.blur()
+  elInput.disabled = true
+  updateDownloadLink()
 }
-
-
 
 function onSetLineTxt(txt) {
   setLineTxt(txt)
@@ -89,22 +110,25 @@ function onSetLineTxt(txt) {
 function onSetLineColor(color) {
   setLineColor(color)
   renderMeme(true)
+  updateDownloadLink()
 }
 function onAddLine() {
   addLine()
   elInput.disabled = false 
-  elInput.focus()            
+  elInput.focus()
 }
 
 function onSwitchLine() {
-  elInput.disabled = false 
+  elInput.disabled = false
   switchLine()
 }
 function onIncreaseFont() {
   increaseFont()
+  updateDownloadLink()
 }
 function onDecreaseFont() {
   decreaseFont()
+  updateDownloadLink()
 }
 
 function shareOnFacebook() {

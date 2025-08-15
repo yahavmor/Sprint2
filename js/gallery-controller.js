@@ -109,4 +109,3 @@ function onImFlexible() {
   clearTxtInput()
   renderMeme(false)
 }
-
