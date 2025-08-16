@@ -32,7 +32,7 @@ savedMemes.forEach((memeUrl, i) => {
 function onSaveMeme() {
   renderMeme(false, () => {
     const dataURL = elCanvas.toDataURL('image/jpeg')
-    const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) || []
+    const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) 
     savedMemes.push(dataURL)
     localStorage.setItem('savedMemes', JSON.stringify(savedMemes))
     showSaveToast()
@@ -40,7 +40,7 @@ function onSaveMeme() {
 }
 
 function deleteSavedMeme(index) {
-  const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) || []
+  const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) 
   savedMemes.splice(index, 1)
   localStorage.setItem('savedMemes', JSON.stringify(savedMemes))
   renderSavedMemes()

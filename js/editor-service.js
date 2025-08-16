@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+
 const gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
@@ -21,7 +22,6 @@ function getMeme() {
 
 function setImg(id) {
   gMeme.selectedImgId = id
-  gMeme.selectedLineIdx = 0
 }
 
 function setLineTxt(txt) {
@@ -88,7 +88,6 @@ function onDeleteLine() {
       align: 'center',
     }
   }
-
   updateInputForSelectedLine()
   renderMeme(true)
 }

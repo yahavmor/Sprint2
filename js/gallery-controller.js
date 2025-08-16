@@ -1,3 +1,5 @@
+'use strict';
+
 function onInit() {
   renderGallery()
   showGallery()
@@ -18,9 +20,9 @@ function onSearch(elInput) {
 
 
 function renderGallery() {
+  const elContainer = document.querySelector('.img-container')
   let imgs = getImgs()
   if (gFilter) imgs = filteredImgs(imgs)
-  const elContainer = document.querySelector('.img-container')
   if (!imgs.length) {
     elContainer.innerHTML = '<p class="no-imgs-to-display">No images found for your search</p>'
     return
@@ -28,7 +30,6 @@ function renderGallery() {
   const strHtmls = imgs.map(img =>
     `<img src="${img.url}" class="gallery-img" onclick="onImgSelect(${img.id})" />`
   ).join('')
-  
   elContainer.innerHTML = strHtmls
 }
 

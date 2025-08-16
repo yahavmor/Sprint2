@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const elCanvas = document.querySelector('.meme-canvas')
 const ctx = elCanvas.getContext('2d')
@@ -74,8 +74,11 @@ function onFontChange(font) {
 elInput.addEventListener('input',ev => {
   onSetLineTxt(ev.target.value)
 })
-elColorPicker.addEventListener('input', (ev) => {
+elColorPicker.addEventListener('input',ev => {
   onSetLineColor(ev.target.value)
+})
+elConfirmLineBtn.addEventListener('click', () => {
+  onConfirmLine()
 })
 function updateDownloadLink() {
   renderMeme(false, () => {
@@ -92,9 +95,7 @@ function updateDownloadLink() {
   })
 }
 
-elConfirmLineBtn.addEventListener('click', () => {
-  onConfirmLine()
-})
+
 
 function onConfirmLine() {
   clearTxtInput()
