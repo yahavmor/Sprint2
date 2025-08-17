@@ -8,3 +8,6 @@
 @import url(components/gallery.css);
 @import url(components/editor.css);
 @import url(components/saved.css);
+
+@import url(mq.css);
+

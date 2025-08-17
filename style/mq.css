@@ -1,0 +1,26 @@
+@media (max-width: 668px) {
+  .editor, .gallery {
+    max-width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+.img-container {
+ grid-template-columns: repeat(2, 1fr);
+}
+
+.meme-canvas {
+    width: 100%;
+    height: auto;
+}
+footer {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+.copyrights{
+    display: flex;
+    text-align: center;
+}
+}

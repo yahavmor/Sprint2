@@ -17,14 +17,17 @@
   letter-spacing: 1px;
   text-align: center;
 }
-.keyword-search {
-  margin-bottom: 10px;
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .keyword-search input {
-  width: 100%;
-  padding: 8px;
+  min-width: 180px;
+  padding: 8px 12px;
   font-size: 16px;
-  border-radius: 6px;
+  margin-right: 30px;
   border: 1px solid var(--color-gray-medium);
 }
 .im-flexible-btn {
@@ -47,7 +50,7 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 16px;
   background: linear-gradient(135deg, #f0f4ff, #e0eaff);
   border-radius: 12px;
