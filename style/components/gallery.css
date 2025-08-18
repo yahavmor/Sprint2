@@ -93,11 +93,15 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
+.img-container:has(img:hover) > img:not(:hover){
+  scale: .9;
+  opacity: .6;
+}
 .gallery-img {
   width: 100%;
   cursor: pointer;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 0 3px var(--color-gray-medium);
 }
 .gallery-img:hover {
